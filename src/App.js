@@ -67,9 +67,9 @@ requestAnimationFrame(raf)
             }}
           >
             <video
-              src="ProductVideo_small.mp4"
+              src="vid.mp4"
               ref={videoRef}
-              style={{  width:"100%", objectFit: "contain"   }}
+              style={{  width:"100%", objectFit: "cover"   }}
             ></video>
           </div>
         </div>
