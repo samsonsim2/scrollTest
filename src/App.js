@@ -2,9 +2,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import script from "./Script";
 import Script from "./Script";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
  
+const Loading=()=>{
+  return(
+<h1>loading</h1>)
+}
 function App() {
 
   const lenis = new Lenis()
@@ -27,8 +31,8 @@ requestAnimationFrame(raf)
     const section = containerRef.current;
 
     const scroll = () => {
-      const distance = lenis.scroll - section.offsetTop; // start measure scroll distance when it hits the video section
-      const total = section.clientHeight - (window.innerHeight)
+      const distance =  lenis.scroll - section.offsetTop ; // start measure scroll distance when it hits the video section
+      const total = section.clientHeight -  window.innerHeight
       // console.log(section.clientHeight )
       // console.log(window.innerHeight)
       // console.log(total)
@@ -66,11 +70,15 @@ requestAnimationFrame(raf)
               
             }}
           >
+            <Suspense fallback={<Loading />}>
             <video
-              src="vid.mp4"
+              src="finalcompressed.mp4"
               ref={videoRef}
+              type='video/mp4' 
               style={{  width:"100%", objectFit: "cover"   }}
+               muted
             ></video>
+            </Suspense>
           </div>
         </div>
         {/* <div
